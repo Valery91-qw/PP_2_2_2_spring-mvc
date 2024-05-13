@@ -2,12 +2,12 @@ package web.service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import web.dao.CarDao;
 import web.models.Car;
 
-@Repository
+@Service
 public class CarServiceImp implements CarService {
 
     private final CarDao carDao;
@@ -17,12 +17,10 @@ public class CarServiceImp implements CarService {
     }
 
     @Override
-    public List<Car> getCars() {
-        return this.carDao.getCars();
-    }
-
-    @Override
     public List<Car> getCars(Integer count) {
+        if (count == null) {
+            return this.carDao.getCars();
+        }
         return this.carDao.getCars(count);
     }
     

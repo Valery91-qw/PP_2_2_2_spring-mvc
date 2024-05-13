@@ -20,14 +20,13 @@ public class CarDaoImp implements CarDao {
         cars.add(new Car("java4x", 2300, "popo"));
     }
 
+    @Override
     public List<Car> getCars() {
         return this.cars;
     }
 
+    @Override
     public List<Car> getCars(Integer count) {
-        if(count == null) {
-            return getCars();
-        }
         return this.cars.stream().limit(count).toList();
     }
 }
